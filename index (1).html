@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>PasarKu - Jual Beli Online</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="topbar">
+    <div class="container topbar-inner">
+      <a href="#" class="logo">Pasar<span>Ku</span></a>
+      <input type="search" id="searchInput" placeholder="Cari barang..." aria-label="Cari barang">
+      <button id="sellBtn" class="btn btn-outline">+ Jual Barang</button>
+      <button id="cartBtn" class="btn btn-primary">Keranjang <span id="cartCount" class="badge">0</span></button>
+    </div>
+  </header>
+
+  <section class="hero">
+    <div class="container">
+      <h1>Jual &amp; Beli Barang, Mudah dan Cepat</h1>
+      <p>Temukan barang yang kamu butuhkan atau jual barang yang tidak terpakai.</p>
+    </div>
+  </section>
+
+  <main class="container">
+    <div class="toolbar">
+      <div id="categories" class="chips"></div>
+      <select id="sortSelect" aria-label="Urutkan">
+        <option value="new">Terbaru</option>
+        <option value="low">Harga Terendah</option>
+        <option value="high">Harga Tertinggi</option>
+      </select>
+    </div>
+
+    <div id="productGrid" class="grid"></div>
+    <p id="emptyState" class="empty" hidden>Tidak ada barang yang cocok.</p>
+  </main>
+
+  <footer class="footer">
+    <div class="container">&copy; 2026 PasarKu. Proyek belajar HTML, CSS, dan JavaScript.</div>
+  </footer>
+
+  <!-- Modal jual barang -->
+  <div id="sellModal" class="modal" hidden>
+    <div class="modal-box">
+      <div class="modal-head">
+        <h2>Jual Barang</h2>
+        <button class="close" data-close aria-label="Tutup">&times;</button>
+      </div>
+      <form id="sellForm">
+        <label>Nama Barang
+          <input type="text" name="name" required maxlength="80">
+        </label>
+        <label>Harga (Rp)
+          <input type="number" name="price" required min="1" step="1">
+        </label>
+        <label>Kategori
+          <select name="category" required>
+            <option>Elektronik</option>
+            <option>Fashion</option>
+            <option>Rumah</option>
+            <option>Hobi</option>
+            <option>Lainnya</option>
+          </select>
+        </label>
+        <label>Nama Penjual
+          <input type="text" name="seller" required maxlength="40">
+        </label>
+        <label>URL Gambar (opsional)
+          <input type="url" name="image" placeholder="https://...">
+        </label>
+        <label>Deskripsi
+          <textarea name="desc" rows="3" maxlength="300"></textarea>
+        </label>
+        <button type="submit" class="btn btn-primary block">Pasang Barang</button>
+      </form>
+    </div>
+  </div>
+
+  <!-- Drawer keranjang -->
+  <div id="cartDrawer" class="modal drawer" hidden>
+    <div class="modal-box">
+      <div class="modal-head">
+        <h2>Keranjang</h2>
+        <button class="close" data-close aria-label="Tutup">&times;</button>
+      </div>
+      <div id="cartItems"></div>
+      <div class="cart-foot">
+        <div class="total">Total: <strong id="cartTotal">Rp0</strong></div>
+        <button id="checkoutBtn" class="btn btn-primary block">Checkout</button>
+      </div>
+    </div>
+  </div>
+
+  <div id="toast" class="toast" hidden></div>
+  <script src="script.js"></script>
+</body>
+</html>
